@@ -1,0 +1,656 @@
+/* Estilo geral */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212; /* Fundo escuro */
+    color: #fff; /* Texto claro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-size: 16px; /* Aumenta o tamanho da fonte para melhor legibilidade */
+    line-height: 1.6; /* Aumenta a altura da linha para facilitar a leitura */
+}
+
+/* Container principal */
+#chat-container { 
+    background-color: #fff; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+
+/* Alinhamento central do container */
+#login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Centraliza os itens no eixo horizontal */
+    padding: 30px;
+    border-radius: 15px;
+    background-color: black;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    height: auto;
+    margin: auto; /* Centraliza verticalmente e horizontalmente */
+    position: absolute;
+    top: 50%; /* Alinha verticalmente */
+    left: 50%; /* Alinha horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta para o centro exato */
+}
+
+/* Adiciona um título de boas-vindas */
+#login-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+/* Botão de login ajustado */
+#login-btn {
+    
+    max-width: 300px;
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#login-btn:hover {
+    background-color: #0056b3; /* Tom mais escuro no hover */
+    transform: scale(1.02); /* Leve crescimento */
+}
+/* Campos de entrada ajustados */
+#username, #password {
+    width: calc(100% - 20px); /* Reduz a largura com base no padding */
+    max-width: 300px; /* Garante que os campos não fiquem muito largos */
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #555;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #2c2c3e;
+    color: #fff;
+    transition: all 0.3s ease;
+    box-sizing: border-box; /* Inclui padding na largura total */
+}
+
+
+#username:focus, #password:focus {
+    border-color: #007bff; /* Realce ao foco */
+    background-color: #3a3a4e;
+    outline: none;
+}
+
+
+#login-btn:active {
+    transform: scale(0.98); /* Clique visual */
+} 
+
+/* Container de boas-vindas */
+#name-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: black;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px black;
+    width: 100px;
+    margin: auto;
+    text-align: center;
+}
+
+/* Caixa de chat */
+#chat-box {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    border-bottom: 1px solid #ccc;
+    background-color: #fafafa;
+    width: 100%;
+    max-width: 700px;
+}
+
+/* Container do nome */
+/* Centraliza o próprio container na tela */
+#name-container {
+    display: flex; /* Ativa o Flexbox */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    align-items: center; /* Centraliza os itens verticalmente */
+    gap: 20px; /* Espaçamento uniforme entre os elementos */
+    padding: 10px; /* Espaçamento interno */
+    background-color: black; /* Cor de fundo */
+    border-radius: 5px; /* Bordas arredondadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
+    width: 100%; /* O contêiner ocupa toda a largura disponível */
+}
+
+/* Caixa de chat */
+#chat-box {
+    flex-grow: 1;
+    padding: 20px; /* Aumenta o padding para mais espaço interno */
+    overflow-y: auto;
+    border-bottom: 1px solid #ccc;
+    background-color: #f9f9f9;
+    width: 100%; /* Garante que ocupe 100% da largura disponível */
+    max-width: 700px; /* Aumenta a largura máxima */
+}
+
+
+/* Estilo das mensagens */
+.message {
+    margin: 8px 0;
+    padding: 18px 22px; /* Aumentando o padding das mensagens para tornar o texto mais espaçado */
+    border-radius: 15px;
+    max-width: 75%;
+    word-wrap: break-word;
+    background-color: #e4e4e4;
+    color: #333;
+    transition: background-color 0.3s;
+    font-size: 16px; /* Aumentando o tamanho da fonte */
+    line-height: 1.6; /* Melhorando a altura da linha */
+}
+
+/* Estilo das mensagens do usuário */
+.user-message {
+    background-color: #dcf8c6; /* Cor de fundo verde */
+    color: black; /* Cor do texto preta */
+    border-radius: 20px;
+    padding: 12px 18px;
+    max-width: 80%;
+    margin-bottom: 10px;
+    align-self: flex-end; /* À direita */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 18px; /* Aumente o valor para aumentar o tamanho da fonte */
+    line-height: 1.5;
+    display: inline-block;
+    word-wrap: break-word;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Estilo das mensagens do bot */
+.bot-message {
+    background-color: #e4e4e4; /* Cor de fundo cinza */
+    color: #333;
+    border-radius: 20px;
+    padding: 12px 18px;
+    max-width: 80%; /* Largura máxima */
+    align-self: flex-start; /* Alinha à esquerda */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 18px; /* Tamanho do texto */
+    line-height: 1.5; /* Altura das linhas */
+    display: block; /* Garante que a mensagem ocupa toda a linha */
+    word-wrap: break-word; /* Quebra o texto */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Efeito de hover nas mensagens do usuário */
+.user-message:hover {
+    background-color: #b8e59f;
+    transform: translateY(-2px);
+}
+
+/* Efeito de hover nas mensagens do bot */
+.bot-message:hover {
+    background-color: #cccaca;
+    transform: translateY(-2px);
+}
+
+
+
+/* Caixa de entrada de nome */
+#user-name {
+    width: 100%;
+    padding: 15px 20px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 18px; /* Aumentando o tamanho da fonte */
+    background-color: #f9f9f9;
+    transition: 0.3s ease;
+}
+
+#user-name:focus {
+    border-color: #007bff;
+    background-color: #e9f4ff;
+    outline: none;
+}
+
+/* Botão de iniciar chat */
+#start-chat-button {
+    padding: 16px 22px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 18px; /* Aumentando o tamanho da fonte */
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 15px;
+}
+
+#start-chat-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+#start-chat-button:active {
+    transform: scale(0.98);
+}
+
+/* Container de mensagens */
+#input-container {
+    display: flex;
+    padding: 10px;
+    background-color: black;
+    border-top: 2px solid #ccc;
+}
+
+/* Caixa de entrada de mensagem */
+#message {
+    flex-grow: 1;
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 16px; /* Aumentando o tamanho da fonte */
+    margin-right: 10px;
+    transition: 0.3s ease;
+}
+
+#message:focus {
+    border-color: #007bff;
+    background-color: #e9f4ff;
+    outline: none;
+}
+
+/* Estilo dos botões */
+button {
+    padding: 14px 25px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    transform: translateX(1%); /* Ajusta para ficar centralizado */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Links */
+a {
+    color: blue;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: darkblue;
+}
+
+/* Estilo da imagem oculta */
+.hidden-image {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.hidden-image img {
+    max-width: 300px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.hidden-image img:hover {
+    transform: scale(1.05);
+}
+
+/* Estilo da observação */
+#update-info {
+    font-size: 16px; /* Aumentando o tamanho da fonte */
+    color: #555;
+    padding: 14px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    margin-top: 20px;
+    display: none; 
+    text-align: center;
+    line-height: 1.6;
+}
+
+
+
+/* Barra lateral */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: -220px; /* Barra lateral inicialmente fora da tela */
+    width: 00px; /* Barra lateral mais estreita */
+    height: 100%;
+    background-color: #007bff; /* Cor de fundo */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+    transition: left 0.3s ease;
+    z-index: 1000;
+    padding: 10px; /* Menos padding */
+    box-sizing: border-box;
+    overflow-y: auto; /* Permite o scroll caso o conteúdo seja maior que a altura da tela */
+}
+
+/* Mostrar a barra lateral */
+#sidebar.show {
+    left: 0; /* Move a barra lateral para dentro da tela */
+}
+
+/* Container dos botões */
+#options-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza os botões horizontalmente */
+    justify-content: flex-start; /* Alinha os botões no topo */
+    color: white;
+    height: 100%; /* Garante que ocupa toda a altura disponível */
+}
+
+/* Botões dentro da barra lateral */
+#options-bar button {
+    background-color: transparent;
+    border: 2px solid transparent;
+    color: white;
+    font-size: 14px; /* Tamanho da fonte reduzido */
+    cursor: pointer;
+    margin-bottom: 8px; /* Menos espaço entre os botões */
+    padding: 6px 12px; /* Tamanho do botão reduzido */
+    border-radius: 18px; /* Bordas mais arredondadas */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    width: 10%; /* Ajusta a largura do botão para ocupar toda a largura disponível */
+}
+
+/* Efeito de hover nos botões */
+#options-bar button:hover {
+    background-color: #0056b3;
+    border-color: #0056b3; /* Borda também muda ao passar o mouse */
+}
+/*--------------------------------------------------------------------------------
+/* menu de configurações */
+#settings-menu {
+    display: none; /* Inicialmente oculto */
+    position: relative;
+    background-color: #333; /* Cor de fundo mais escura */
+    color: #007bff; /* Cor do texto em azul */
+    padding: 10px 20px;
+    border: 3px solid #007bff; /* Borda azul */
+    border-radius: 18px;
+    font-size: 18px;
+    width: 555px; /* Largura ajustada para um bom layout */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Sombra suave */
+    transition: all 0.3s ease; /* Animação suave */
+    z-index: 100; /* Garante que esteja acima de outros elementos */
+}
+
+#settings-menu ul {
+    list-style-type: none; /* Remove os marcadores da lista */
+    padding: 0;
+    margin: 0;
+}
+
+/* Itens da lista de configurações */
+#settings-menu ul li {
+    padding: 0px 15px;
+    border-bottom: 1px solid #444; /* Separação entre os itens */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Animação ao interagir */
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px; /* Borda arredondada */
+    margin-bottom: 1px; /* Espaçamento entre os itens */
+}
+
+/* Estado hover */
+#settings-menu ul li:hover {
+    background-color: #222; /* Fundo mais escuro ao passar o mouse */
+    color: #fff; /* Texto branco no hover */
+}
+
+/* Efeito de transição no hover do botão */
+#settings-menu button:hover {
+    
+    color: #fff; /* Cor do texto ao passar o mouse */
+    border-radius: 12px; /* Arredonda as bordas ao passar o mouse */
+}
+
+/* Estilo quando o botão é focado */
+#settings-menu button:focus {
+    outline: none; /* Remove o contorno ao focar no botão */
+}
+
+/* Estilo dos botões dentro do menu */
+#settings-menu button {
+    width: 100%; /* Ocupa toda a largura do item */
+    padding: 10px; /* Ajusta o espaçamento interno */
+    text-align: center; /* Alinha o texto ao centro */
+    border: none; /* Remove a borda padrão */
+    background-color: transparent; /* Fundo transparente */
+    font-size: 16px; /* Tamanho da fonte */
+    cursor: pointer; /* Cursor em forma de mão */
+    box-sizing: border-box; /* Inclui padding e borda no cálculo de largura */
+    margin: 5px 0; /* Adiciona margem entre os botões */
+    color: #007bff; /* Cor do texto no botão */
+    display: flex; /* Habilita flexbox */
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+}
+
+/* Efeito de visual no menu ao ser ativado */
+#settings-menu.show {
+    display: block; /* Torna visível quando ativado */
+}
+
+
+
+/*--------------------------------------------------------------------------------
+
+/* Botão de Configurações */
+#show-options-btn {
+    background-color: transparent;
+    color: #007bff;
+    border: 2px solid #007bff;
+    font-size: 18px;
+    padding: 20px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 15px;
+      
+}
+
+/* Animação do botão de hover */
+#show-options-btn:hover {
+    background-color: #0056b3;
+    color: white;
+}
+/*-----------------------------------------------------------------------------------------------------
+/* Estilo do nome do usuário (semelhante ao botão de configurações) */
+#user-name-display {
+    font-size: 18px; /* Tamanho da fonte */
+    color: white; /* Cor do texto */
+    border: 2px solid white;
+    background-color: #007bff; /* Cor de fundo */
+    padding: 20px 30px;
+    border-radius: 25px; /* Bordas arredondadas */
+    font-weight: bold; /* Deixar o texto em negrito */
+    text-align: center; /* Centraliza o texto */
+    margin-top: 15px;
+    
+    
+    
+}
+
+#user-name-display:hover {
+    background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+}
+
+
+
+
+
+/* ____________________________________________________________________________
+
+/* Barra lateral de usuários */
+#user-menu {
+    display: none; /* Inicialmente oculto */
+    position: relative;
+    background-color: #333; /* Cor de fundo mais escura */
+    color: #007bff; /* Cor do texto em azul */
+    padding: 10px 20px;
+    border: 3px solid #007bff; /* Borda azul */
+    border-radius: 18px;
+    font-size: 18px;
+    width: 555px; /* Largura ajustada para um bom layout */
+    
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Sombra suave */
+    transition: all 0.3s ease; /* Animação suave */
+    z-index: 100; /* Garante que esteja acima de outros elementos */
+}
+
+#user-menu ul {
+    list-style-type: none; /* Remove os marcadores da lista */
+    padding: 0;
+    margin: 0;
+}
+
+/* Título da lista */
+#user-menu ul li strong {
+    display: block;
+    font-weight: bold;
+
+    text-align: center;
+    margin-bottom: 10px;
+    color: #fff; /* Cor do texto */
+}
+
+/* Itens da lista */
+.user-item {
+    
+    padding: 0px 15px;
+    border-bottom: 1px solid #444; /* Separação entre os itens */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Animação ao interagir */
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px; /* Borda arredondada */
+    margin-bottom: 1px; /* Espaçamento entre os itens */
+}
+
+/* Estado hover */
+.user-item:hover {
+    background-color: #222; /* Fundo mais escuro ao passar o mouse */
+    color: #fff; /* Texto branco no hover */
+}
+
+/* Estilo de usuários online */
+.user-item.online {
+    color: #00ff00; /* Verde para usuários online */
+    font-weight: bold;
+}
+
+/* Botão dentro do item */
+.user-item button {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    width: auto /* Botão ocupa todo o espaço */
+    
+}
+
+/* Efeito visual no menu ao ser ativado */
+#user-menu.show {
+    display: block; /* Torna visível quando ativado */
+}
+
+/* Botão de Exibir Usuario */
+#show-users-btn {
+    background-color: transparent;
+    color: #007bff;
+    border: 2px solid #007bff;
+    font-size: 18px;
+    padding: 20px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 15px;
+    float: unset;
+    
+     
+}
+
+/* Animação do botão de hover */
+#show-users-btn:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+
+
+
+/* Melhorando responsividade */
+@media (max-width: 600px) {
+    #chat-container {
+        height: auto;
+        max-width: 100%;
+    }
+
+    #start-chat-button {
+        padding: 14px 22px;
+    }
+
+    #user-name {
+        font-size: 16px;
+    }
+
+    .message {
+        max-width: 90%;
+        font-size: 15px;
+    }
+}
+
+#update-info {
+    position: absolute; /* Garante que a mensagem fique no final da tela */
+    bottom: 1px; /* Define a distância do rodapé */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%); /* Ajusta para ficar centralizado */
+    background-color:red; /* Fundo semi-transparente */
+    color: white; /* Cor do texto */
+    padding: 10px 20px; /* Espaçamento interno */
+    border-radius: 5px; /* Bordas arredondadas */
+    font-size: 14px; /* Tamanho da fonte */
+    display: none; /* Inicialmente escondido */
+    z-index: 999; /* Fica sobre outros elementos */
+    text-align: center; /* Alinha o texto ao centro */
+    max-width: 90%; /* Limita o tamanho máximo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra leve */
+    transition: opacity 0.3s ease-in-out; /* Animação suave de aparecimento */
+}
+
+
+
+@media (max-width: 600px) {
+    #update-info {
+        font-size: 12px;
+        padding: 8px;
+    }
+}

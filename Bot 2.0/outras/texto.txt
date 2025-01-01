@@ -1,0 +1,52 @@
+Estrutura do Projeto Atualizada
+
+app.py: Arquivo principal para execução do bot.
+database.py: Manipulação do banco de dados (armazenar e buscar conversas).
+response.py: Lógica para processar respostas e interações.
+faq.py: Perguntas e respostas definidas pelo usuário.
+ml_model.py: Aprendizado de máquina (opcional).
+train.py: Treinamento manual de novas respostas.
+chatbot.db: Banco de dados.
+
+faq.py
+Neste arquivo, você pode definir suas perguntas e respostas de forma simples. Aqui está um exemplo de como pode ser:
+
+response.py
+Agora, vamos modificar a função processar_mensagem() em response.py para utilizar o arquivo faq.py para obter as respostas.
+
+app.py
+Certifique-se de que o app.py permanece o mesmo, pois a lógica de obtenção de resposta agora está delegada ao response.py, que por sua vez usa faq.py.
+
+projeto/
+│
+├── perguntas/
+│   ├── brb_pergunta.py
+│   ├── coman_bancos_pergunta.py
+│   ├── email_pergunta.py
+│   ├── fiplan_pergunta.py
+│   ├── passos_pergunta.py
+│   ├── ramal_pergunta.py
+│   └── __init__.py
+│
+├── respostas/
+│   ├── brb_resposta.py
+│   ├── coman_bancos_resposta.py
+│   ├── email_resposta.py
+│   ├── fiplan_resposta.py
+│   ├── passos_resposta.py
+│   ├── ramal_resposta.py
+│   └── __init__.py
+│
+├── app.py
+├── faq.py
+├── fulixograma.py
+├── main.py
+├── ml_model.py
+├── perguntas.py
+├── receita_perguntas.py
+├── receita_resposta.py
+├── requirements.txt
+├── response.py
+├── respostas.py
+├── texto.txt
+└── train.py

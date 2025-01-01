@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="chat-container" role="chat" aria-label="Container de chat">
+        
+        
+        <!-- Container de login -->
+        <div id="login-container" aria-live="polite">
+            <h3>Login</h3>
+            <input type="text" id="username" placeholder="Digite seu usuário" autofocus aria-label="Nome de usuário">
+            <input type="password" id="password" placeholder="Digite sua senha" aria-label="Senha">
+            <button id="login-btn" onclick="handleLogin()" aria-label="Entrar">Entrar</button>
+        
+            <!-- Feedback de status de login -->
+            <div id="login-feedback" style="display: none; color: red;" aria-live="assertive">
+                <p id="login-error-message"></p>
+            </div>
+        
+            <!-- Informações adicionais abaixo do botão de login -->
+            <div id="additional-info" style="margin-top: 10px; font-size: 14px; color: #555;">
+                <p style="color: #90EE90;">Versão 2.0 - 2024</p>
+                <p style="color: red;">Essas rotinas são referenta a 2022 e 2023</p>
+                <p style="color: black;">Criador: Álisson N.S</p> 
+            </div>
+        </div>
+        
+
+        <!-- Container de boas-vindas -->
+        <div id="name-container" aria-live="polite" style="display: none;">
+            
+            <!-- Botão para exibir barra lateral de configurações -->
+            <button id="show-options-btn" onclick="toggleOptionsBar()" aria-label="Configurações">Configurações</button>
+
+            <span id="user-name-display">Usuário: <span id="user-display"></span></span>
+            <!-- Botão para exibir a lista de usuários online/offline -->
+            
+        </div>
+
+        <!-- Barra lateral de configurações -->
+        <div id="settings-menu" class="settings-menu">
+            <ul>
+                <li><button id="logout-btn" onclick="logout()" aria-label="Sair">Sair</button></li>
+                <li><button id="clear-chat-btn" onclick="clearChat()" aria-label="Limpar conversa">Limpar</button></li>
+                <!-- Botão para exibir "Exibir Usuário" -->
+                <li>
+                    <button id="show-user-btn" onclick="toggleUserList()" aria-label="Exibir Usuário">Exibir Usuário</button>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Barra lateral de usuários (inicialmente oculta) -->
+        <div id="user-menu" class="user-menu" style="display: none;">
+            <ul>
+                <li class="user-item"><button>Usuário 1</button></li>
+                <li class="user-item online"><button>Usuário Online</button></li>
+                <li><strong>Usuário Online</strong></li>
+            </ul>
+        </div>
+
+        <!-- Informativo de atualização -->
+        <div id="update-info" aria-live="polite" style="display: none;">
+            <p>Obs.: Essa rotina teve a última atualização em 2022 e 2023.</p>
+        </div>
+
+        <!-- Caixa de chat -->
+        <div id="chat-box" aria-live="polite" aria-relevant="additions" style="display: none;">
+            <!-- Mensagens vão aparecer aqui -->
+        </div>
+
+        <!-- Input para mensagens -->
+        <div id="input-container" style="display: none;">
+            <input type="text" id="message" placeholder="Digite sua mensagem..." aria-label="Mensagem">
+            <button onclick="sendMessage()" aria-label="Enviar mensagem">Enviar</button>
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='chat.js') }}"></script>
+</body>
+</html>
